@@ -1,6 +1,8 @@
-export function load({ fetch }) {
-  const user = fetch('/user')
+import { json } from '@sveltejs/kit'
+
+export async function load({ fetch }) {
+  const user = await fetch('/user')
   return {
-    user
+    user: json(user)
   }
 }
