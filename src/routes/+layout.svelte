@@ -3,7 +3,7 @@
     <img src="http://iph.href.lu/320x100?text=LOGO&fg=666666&bg=f1f1f1" alt="" class="logo"/>
   </header>
   <main class="main">
-    <slot></slot>
+    <slot/>
   </main>
   <footer class="footer">%copyright%</footer>
 </div>
@@ -13,6 +13,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #fafafa;
   .header {
     width: 100%;
     height: 3.5rem;

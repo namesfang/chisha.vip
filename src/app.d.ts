@@ -5,7 +5,12 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-		// interface Platform {}
+		interface Platform {
+			env: {
+				CHISHA_D1: D1Database
+				CHISHA_D1_PRE: D1Database
+			}
+		}
 	}
 }
 
