@@ -7,6 +7,6 @@
 
 <a href="/login">注册</a>
 
-{ data.name }
+<h2>User from D1:</h2>
 
-<p>User: { data.result }</p>
+<pre>{ data.result }</pre>

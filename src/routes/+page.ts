@@ -1,6 +1,6 @@
-// export function load({ fetch }) {
-//   const user = fetch('/user')
-//   return {
-//     user
-//   }
-// }
+export function load({ fetch }) {
+  const user = fetch('/user')
+  return {
+    user
+  }
+}
