@@ -1,7 +1,5 @@
 <div class="container">
-  <header class="header">
-    <img src="http://iph.href.lu/320x100?text=LOGO&fg=666666&bg=f1f1f1" alt="" class="logo"/>
-  </header>
+  <header class="header">LOGO</header>
   <main class="main">
     <slot/>
   </main>
@@ -29,10 +27,6 @@
       bottom: 0;
       left: 0;
       right: 0;
-    }
-
-    .logo {
-      height: 100%;
     }
   }
   
