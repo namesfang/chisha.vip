@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let data;
+  import UploadMaster from '$components/upload-master/index.svelte'
+  
+  const uploadError = ()=> {
+    console.log('upload error')
+  }
 </script>
 
 <a href="/login">登录</a>
@@ -10,4 +14,4 @@
 
 <h2>User from D1:</h2>
 
-<pre>{ data.result }</pre>
+<UploadMaster platform="qiniu" type="image" on:error={ uploadError }/>
