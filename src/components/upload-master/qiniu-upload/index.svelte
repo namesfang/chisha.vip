@@ -25,6 +25,7 @@
     })
 
     const { success, data } = await result.json()
+    
     if(success) {
       body.append('key', name)
       body.append('token', data.token)
@@ -36,7 +37,9 @@
         mode: 'cors',
       })
 
-      console.log(result)
+      const data2 = await result.json()
+
+      console.log(data2)
     }
   }
 </script>
