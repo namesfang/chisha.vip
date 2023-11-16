@@ -37,15 +37,3 @@
 //     result: JSON.stringify(result),
 //   }
 // }
-
-export async function load() {
-  return {
-    
-  }
-}
-
-export const actions = {
-  async in() {
-    
-  }
-}
