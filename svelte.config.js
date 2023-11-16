@@ -10,7 +10,10 @@ const config = {
 				include: ['/*'],
 				exclude: ['<all>']
 			}
-		})
+		}),
+		alias: {
+			$components: 'src/components'
+		}
 	}
 };
 
