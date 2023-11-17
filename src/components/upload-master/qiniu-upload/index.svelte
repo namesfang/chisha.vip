@@ -54,23 +54,26 @@
 
     const path = btoa(name);
 
+    // const url = `https://rs.qiniu.com/delete/${path}`;
     const url = `${makeManageDomain(region)}/delete/${path}`
+    // const url = 'http://rs.qiniu.com/move/bmV3ZG9jczpmaW5kX21hbi50eHQ=/bmV3ZG9jczpmaW5kLm1hbi50eHQ='
 
     const { hostname, pathname, search } = new URL(url);
 
-    const headers: {[k: string]: string} = {
-      'X-Qiniu-Date': dayjs().format('YYYYMMDDTHHmmss') + 'Z',
-    }
+    const headers: {[k: string]: string} = {};
+    // const headers = {
+    //   'X-Qiniu-Date': dayjs().format('YYYYMMDDTHHmmss') + 'Z',
+    // }
 
     const pieces = [
       search
         ? `${method.toUpperCase()} ${pathname}${search}`
         : `${method} ${pathname}`,
         `Host: ${hostname}`,
-        `Content-Type: application/x-www-form-urlencoded`,
+        // `Content-Type: application/x-www-form-urlencoded`,
     ];
 
-    if (headers) {
+    if (Object.keys(headers).length > 0) {
       const keys = Object.keys(headers).filter(
         (key) => key.indexOf('X-Qiniu-') === 0,
       );
@@ -88,7 +91,9 @@
 
     const body = pieces.join('\n')
 
-    console.log('body', body)
+    console.log('body', JSON.stringify({
+        body
+      }))
 
     const result = await fetch('http://localhost:8080/storage/qiniu/delete-token', {
       body: JSON.stringify({
@@ -104,15 +109,16 @@
 
     if(success) {
       const qiniuResult = await fetch(url, {
+        mode: 'cors',
         method,
         headers: {
           ...headers,
-          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Content-Type': 'application/x-www-form-urlencoded',
           Authorization: `Qiniu ${data.token}`,
         }
       })
 
-      const qiniuData = await qiniuResult.json()
+      const qiniuData = await qiniuResult.text()
 
       console.log('qiniuData', qiniuData);
     }
