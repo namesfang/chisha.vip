@@ -1,0 +1,90 @@
+:root {
+  --black: #333;
+  --white: #fff;
+
+  /* 颜色 */
+  --primary-color: #D0A2F7;
+  --primary-light-color: #DCBFFF;
+  --primary-dark-color: #af7afd;
+  --primary-secondary-color: #DCBFFF;
+  --primary-secondary-light-color: #d0305038;
+  --primary-secondary-dark-color: #d0305047;
+
+  --success-color: #18a058;
+  --success-light-color: #18a058;
+  --success-dark-color: #18a058;
+  --error-secondary-color: #f7dee3;
+  --error-secondary-light-color: #d0305038;
+  --error-secondary-dark-color: #d0305047;
+
+  --info-color: #2080f0;
+  --info-secondary-color: #dbebfd;
+  --info-secondary-color: #f7dee3;
+  --info-secondary-light-color: #d0305038;
+  --info-secondary-dark-color: #d0305047;
+
+  --warning-color: #fcb040;
+  --warning-light-color: #f0a020;
+  --warning-dark-color: #c97c10;
+  --error-secondary-color: #f7dee3;
+  --error-secondary-light-color: #d0305038;
+  --error-secondary-dark-color: #d0305047;
+
+  --error-color: #d03050;
+  --error-light-color: #de576d;
+  --error-dark-color: #ab1f3f;
+  --error-secondary-color: #f7dee3;
+  --error-secondary-light-color: #d0305038;
+  --error-secondary-dark-color: #d0305047;
+
+  /* 圆角 */
+  --border-radius-tiny: .20rem;
+  --border-radius-small: .28rem;
+  --border-radius-medium: .38rem;
+  --border-radius-large: .56rem;
+
+  /* 输入框 */
+  --input-primary-border-radius: var(--border-radius);
+  --input-primary-border: 1px solid var(--primary-dark-color);
+  --input-primary-color: var(--white);
+  --input-primary-placeholder-color: var(--primary-light-color);
+  --input-primary-background-color: var(--primary-color);
+  --input-primary-box-shadow: inset 0 0 0 .1rem var(--primary-light-color);
+  --input-secondary-background: var(--error-secondary-color);
+}
+
+.fab-input-tiny {
+  border-radius: var(--border-radius-tiny);
+}
+.fab-input-small {
+  border-radius: var(--border-radius-small);
+}
+.fab-input-medium {
+  border-radius: var(--border-radius-medium);
+}
+.fab-input-large {
+  border-radius: var(--border-radius-large);
+}
+.fab-dashed {
+  border-style: dashed;
+}
+
+
+
+@keyframes button-wave-spread {
+  from {
+    box-shadow: 0 0 0.5px 0 var(--n-ripple-color);
+  }
+  to {
+    box-shadow: 0 0 0.5px 4.5px var(--n-ripple-color);
+  }
+}
+
+@keyframes button-wave-opacity {
+  from {
+    opacity: var(--n-wave-opacity);
+  }
+  to {
+    opacity: 0;
+  }
+}
