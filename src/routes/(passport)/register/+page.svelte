@@ -1,9 +1,8 @@
+<script lang="ts">
+</script>
+
 <form method="POST" action="?/register">
   <ul>
-    <li>
-      <label for="">账号：</label>
-      <input name="username"/>
-    </li>
     <li>
       <label for="">手机：</label>
       <input name="phone"/>
@@ -20,8 +19,7 @@
       <label for="">密码：</label>
       <input name="password"/>
     </li>
-    
   </ul>
   <button type="submit">注册</button>
-  <button formaction="?/login">登录</button>
+  <a href="/login">登录</a>
 </form>
