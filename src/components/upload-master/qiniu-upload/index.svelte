@@ -1,5 +1,4 @@
 <script lang="ts">
-  import dayjs from 'dayjs';
 	import { makeUploadDomain, makeManageDomain, type Label } from "./utils";
 
   export let type = '';
@@ -50,54 +49,15 @@
 
   const deleteHandle = async ()=> {
     const method = 'POST'
-    const name = 'pdf.png'
-
-    const path = btoa(name);
-
-    // const url = `https://rs.qiniu.com/delete/${path}`;
-    const url = `${makeManageDomain(region)}/delete/${path}`
-    // const url = 'http://rs.qiniu.com/move/bmV3ZG9jczpmaW5kX21hbi50eHQ=/bmV3ZG9jczpmaW5kLm1hbi50eHQ='
-
-    const { hostname, pathname, search } = new URL(url);
-
-    const headers: {[k: string]: string} = {};
-    // const headers = {
-    //   'X-Qiniu-Date': dayjs().format('YYYYMMDDTHHmmss') + 'Z',
-    // }
-
-    const pieces = [
-      search
-        ? `${method.toUpperCase()} ${pathname}${search}`
-        : `${method} ${pathname}`,
-        `Host: ${hostname}`,
-        // `Content-Type: application/x-www-form-urlencoded`,
-    ];
-
-    if (Object.keys(headers).length > 0) {
-      const keys = Object.keys(headers).filter(
-        (key) => key.indexOf('X-Qiniu-') === 0,
-      );
-      keys.forEach((key) => {
-        pieces.push(`${key}: ${headers[key]}`);
-      });
-    }
-
-    pieces.push('');
-    pieces.push('');
-
-    // if (body) {
-    //   pieces.push(body);
-    // }
-
-    const body = pieces.join('\n')
-
-    console.log('body', JSON.stringify({
-        body
-      }))
+    const bucket = 'chisha-bucket'
+    const region = '华东-浙江2'
+    const path = 'b.jpg'
 
     const result = await fetch('http://localhost:8080/storage/qiniu/delete-token', {
       body: JSON.stringify({
-        body
+        path,
+        bucket,
+        region,
       }),
       method,
       headers: {
@@ -108,19 +68,7 @@
     const { success, data } = await result.json();
 
     if(success) {
-      const qiniuResult = await fetch(url, {
-        mode: 'cors',
-        method,
-        headers: {
-          ...headers,
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-          Authorization: `Qiniu ${data.token}`,
-        }
-      })
-
-      const qiniuData = await qiniuResult.text()
-
-      console.log('qiniuData', qiniuData);
+      console.log('mt', data)
     }
   }
 
@@ -165,7 +113,11 @@
 </script>
 
 <div class="">
-  <input type="file" on:change={ changeHandle }/>
+  <ul>
+    <li>
+      <input type="file" on:change={ changeHandle }/>
+    </li>
+  </ul>
 
   <input type="hidden" data-type={ type }/>
 </div>
