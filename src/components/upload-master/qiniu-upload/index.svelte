@@ -47,11 +47,12 @@
     }
   }
 
+  let path = 'dirname/'
+
   const deleteHandle = async ()=> {
     const method = 'POST'
     const bucket = 'chisha-bucket'
     const region = '华东-浙江2'
-    const path = 'b.jpg'
 
     const result = await fetch('http://localhost:8080/storage/qiniu/delete-token', {
       body: JSON.stringify({
@@ -123,6 +124,7 @@
 </div>
 
 <div>
+  <input type="text" bind:value={ path } />
   <button type="button" on:click={ deleteHandle }>删除</button>
 </div>
 

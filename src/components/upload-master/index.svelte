@@ -3,7 +3,7 @@
 	import type { Label } from './qiniu-upload/utils';
 
   export let type = 'image'
-  export let platform = 'qiniu'
+  export let platform: UploadPlatform = 'qiniu'
   export let region: Label = '华东-浙江';
 </script>
 
