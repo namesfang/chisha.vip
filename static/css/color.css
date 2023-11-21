@@ -47,23 +47,23 @@
   --gradients-gradient-red: linear-gradient(286deg: #FF4D67 0%: #FF8A9B 100%);
 
   /* Background */
-  --background-silver: #f3f3f3;
-  --background-purple: #f4ceff;
-  --background-blue: #f6fafd;
-  --background-green: #f2fffc;
-  --background-orange: #fff8ed;
-  --background-pink: #fff5ff;
-  --background-yellow: #fffee0;
+  --background-silver: #F3F3F3;
+  --background-purple: #F4ECFF;
+  --background-blue: #F6FAFD;
+  --background-green: #F2FFFC;
+  --background-orange: #FFF8ED;
+  --background-pink: #FFF5F5;
+  --background-yellow: #FFFEE0;
 
   /* Transparent */
-  --transparent-silver: rgba(10, 10, 10, .08);
-  --transparent-purple: rgba(115, 15, 255, .08);
-  --transparent-blue: rgb(49, 92, 246, .08);
-  --transparent-orange: rgba(255, 153, 0, .08);
-  --transparent-yellow: rgba(250, 204, 0, .08);
-  --transparent-red: rgba(247, 85, 85, .08);
-  --transparent-green: rgba(77, 176, 80, .08);
-  --transparent-cyan: rgba(0, 189, 214, .08);
+  --transparent-silver: rgba(16, 16, 16, 0.08);
+  --transparent-purple: rgba(114, 16, 255, 0.08);
+  --transparent-blue: rgba(51, 94, 247, 0.08);
+  --transparent-orange: rgba(255, 152, 0, 0.08);
+  --transparent-yellow: rgba(250, 204, 21, 0.08);
+  --transparent-red: rgba(247, 85, 85, 0.08);
+  --transparent-green: rgba(76, 175, 80, 0.08);
+  --transparent-cyan: rgba(0, 188, 212, 0.08);
 
   /* Others */
   --others-white: #FFF;
