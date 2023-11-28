@@ -16,5 +16,5 @@
     </li>
   </ul>
   <button type="submit">登录</button>
-  <a href="/register">注册</a>
+  <a href="/signup">注册</a>
 </form>
