@@ -1,5 +1,5 @@
 <script lang="ts">
-  import UploadMaster from '$components/upload-master/index.svelte'
+  import FabUpload from '$components/fab-upload/index.svelte'
   
   const uploadError = ()=> {
     console.log('upload error')
@@ -15,4 +15,4 @@
 <a href="/metoo">Metoo</a>
 
 
-<UploadMaster platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/>
+<FabUpload platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/>
