@@ -15,4 +15,4 @@
 <a href="/metoo">Metoo</a>
 
 
-<FabUpload platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/>
+<!-- <FabUpload platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/> -->

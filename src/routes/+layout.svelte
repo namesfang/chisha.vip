@@ -1,7 +1,3 @@
-<script lang="ts">
-  export let data;
-</script>
-
 <div class="container">
   <header class="header">LOGO</header>
   <main class="main">
