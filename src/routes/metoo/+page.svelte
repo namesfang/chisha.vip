@@ -1,11 +1,4 @@
 <script lang="ts">
-	import { redirect } from "@sveltejs/kit";
-
-
-  redirect(302, '/metoo/party');
-  
-  console.log(302)
-
   let parties = [
     {
       id: 1,

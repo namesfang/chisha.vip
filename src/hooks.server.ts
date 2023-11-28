@@ -1,14 +1,17 @@
-import type { Handle } from "@sveltejs/kit";
+import { redirect, type Handle } from "@sveltejs/kit";
+import { building } from "$app/environment";
+import { PUBLIC_STATIC_URL } from "$env/static/public";
+import local from "./extend/storage/local";
 
 type Prepls = {
-  [key: string]: (prod: boolean, origin: string)=> string
+  [key: string]: (origin: string)=> string
 }
 
 const prepls: Prepls = {
   // CDN资源
-  '%cdn.assets%': (prod, origin)=> {
-    if(prod) {
-      return 'http://static.chisha.vip';
+  '%cdn.assets%': (origin)=> {
+    if(building) {
+      return PUBLIC_STATIC_URL;
     }
     return origin;
   },
@@ -19,13 +22,23 @@ const prepls: Prepls = {
 }
 
 export const handle: Handle = async ({ event, resolve })=> {
-  // event.locals.user = {
-  //   a: 1312
-  // }
+  const { pathname } = event.url;
+  console.log('hooks:' + pathname)
+  if(local.logged) {
+    if(['/login', '/signup'].includes(pathname)) {
+      throw redirect(302, '/');
+    }
+    event.locals = local.user as App.Locals;
+  } else {
+    if(!['/login', '/signup', '/metoo'].includes(pathname)) {
+      throw redirect(302, '/login');
+    }
+  }
+  
   return resolve(event, {
     transformPageChunk: ({ html })=> {
       Object.keys(prepls).forEach((n, i)=> {
-        html = html.replaceAll(n, Object.values(prepls)[i](process.env.NODE_ENV === 'production', event.url.origin))
+        html = html.replaceAll(n, Object.values(prepls)[i](event.url.origin))
       })
       return html;
     },

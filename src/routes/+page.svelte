@@ -6,12 +6,13 @@
   }
 </script>
 
+<h2>主页</h2>
+
 <a href="/login">登录</a>
 
-<a href="/register">注册</a>
+<a href="/signup">注册</a>
 
 <a href="/metoo">Metoo</a>
 
-<h2>User from D1:</h2>
 
 <UploadMaster platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/>
