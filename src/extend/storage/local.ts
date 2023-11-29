@@ -5,7 +5,8 @@ class Local {
   }
 
   get accessToken() {
-    return 'abc'
+    // return localStorage.getItem('token') ?? ''
+    return '';
   }
 
   get logged() {

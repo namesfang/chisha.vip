@@ -21,7 +21,9 @@ const config = {
 			}
 		}),
 		alias: {
-			$components: 'src/components'
+			$layouts: 'src/layouts',
+			$components: 'src/components',
+			$extend: 'src/extend',
 		}
 	}
 };

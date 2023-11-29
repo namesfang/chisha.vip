@@ -1,7 +1,7 @@
 import { redirect, type Handle } from "@sveltejs/kit";
 import { building } from "$app/environment";
 import { PUBLIC_STATIC_URL } from "$env/static/public";
-import local from "./extend/storage/local";
+import local from "$extend/storage/local";
 
 type Prepls = {
   [key: string]: (origin: string)=> string
@@ -23,11 +23,14 @@ const prepls: Prepls = {
 
 export const handle: Handle = async ({ event, resolve })=> {
   const { pathname } = event.url;
-  console.log('hooks:' + pathname)
-  if(local.logged) {
+  const auth = event.cookies.get('Authorization');
+  if(auth) {
     if(['/login', '/signup'].includes(pathname)) {
       throw redirect(302, '/');
     }
+
+    // const info = await event.fetch();
+
     event.locals = local.user as App.Locals;
   } else {
     if(!['/login', '/signup', '/metoo'].includes(pathname)) {

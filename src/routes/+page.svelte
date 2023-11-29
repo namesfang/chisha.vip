@@ -1,10 +1,13 @@
 <script lang="ts">
+  import ClassicLayout from '$layouts/ClassicLayout.svelte';
   import FabUpload from '$components/fab-upload/index.svelte'
   
   const uploadError = ()=> {
     console.log('upload error')
   }
 </script>
+
+<ClassicLayout>
 
 <h2>主页</h2>
 
@@ -16,3 +19,5 @@
 
 
 <FabUpload platform="qiniu" type="image" region="华东-浙江2" on:error={ uploadError }/>
+
+</ClassicLayout>
