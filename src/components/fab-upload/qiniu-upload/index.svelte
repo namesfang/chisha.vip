@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { makeUploadDomain, makeManageDomain, type Label } from "./utils";
-
   export let type = '';
-  export let region: Label;
 
   const changeHandle = async (e: Event)=> {
     const $input = e.target as HTMLInputElement
@@ -13,16 +10,14 @@
 
     const file = $input.files![0]
 
-    const name = `dirname/${file.name}`;
-
     const method = 'POST';
 
     const body = new FormData()
 
-    const result = await fetch('http://localhost:8080/storage/qiniu/upload-token', {
+    const result = await fetch('http://localhost:8080/upload/token', {
       method,
       body: JSON.stringify({
-        name
+        name: file.name
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -32,11 +27,11 @@
     const { success, data } = await result.json()
     
     if(success) {
-      body.append('key', name)
+      body.append('key', file.name)
       body.append('token', data.token)
       body.append('file', file)
 
-      const result = await fetch(makeUploadDomain(region), {
+      const result = await fetch(data.host, {
         body,
         method,
       })
@@ -47,18 +42,14 @@
     }
   }
 
-  let path = 'dirname/'
+  let path = ''
 
   const deleteHandle = async ()=> {
     const method = 'POST'
-    const bucket = 'chisha-bucket'
-    const region = '华东-浙江2'
 
-    const result = await fetch('http://localhost:8080/storage/qiniu/delete-token', {
+    const result = await fetch('http://localhost:8080/upload/remove', {
       body: JSON.stringify({
-        path,
-        bucket,
-        region,
+        path
       }),
       method,
       headers: {
@@ -70,45 +61,6 @@
 
     if(success) {
       console.log('mt', data)
-    }
-  }
-
-  let dirname = 'dirname';
-
-  const mkdir = async ()=> {
-
-    const name = `${dirname}/`;
-    const file = new File([''], name);
-
-    const method = 'POST';
-
-    const body = new FormData()
-
-    const result = await fetch('http://localhost:8080/storage/qiniu/upload-token', {
-      method,
-      body: JSON.stringify({
-        name
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-
-    const { success, data } = await result.json()
-    
-    if(success) {
-      body.append('key', name)
-      body.append('token', data.token)
-      body.append('file', file)
-
-      const result = await fetch(makeUploadDomain(region), {
-        body,
-        method,
-      })
-
-      const data2 = await result.json()
-
-      console.log(data2)
     }
   }
 </script>
@@ -126,9 +78,4 @@
 <div>
   <input type="text" bind:value={ path } />
   <button type="button" on:click={ deleteHandle }>删除</button>
-</div>
-
-<div class="">
-  <input type="text" bind:value={ dirname } />
-  <button type="button" on:click={ mkdir }>创建目录</button>
 </div>
