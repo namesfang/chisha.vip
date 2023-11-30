@@ -24,8 +24,11 @@ const prepls: Prepls = {
 export const handle: Handle = async ({ event, resolve })=> {
   const { pathname } = event.url;
   const token = event.cookies.get('Authorization');
+  const passport = ['/login', '/signup'];
+  const everyone = [...passport, '/metoo'];
   if(token) {
-    if(['/login', '/signup'].includes(pathname)) {
+    // 登录后不允许再访问登录和注册页面
+    if(passport.includes(pathname)) {
       throw redirect(302, '/');
     }
     const { success, message, data } = await get('i/profile').send<User.Info>(event.cookies);
@@ -36,9 +39,10 @@ export const handle: Handle = async ({ event, resolve })=> {
     } else {
       console.log(message, success);
     }
-  } else if(!pathname.startsWith('/help')) {
-    if(!['/login', '/signup', '/metoo'].includes(pathname)) {
-      throw redirect(302, '/login');
+  } else {
+    // 未登录时且访问的页面需要登录时自动跳转到登录页面
+    if(!pathname.startsWith('/help') && !everyone.includes(pathname)) {
+      // throw redirect(302, '/');
     }
   }
   

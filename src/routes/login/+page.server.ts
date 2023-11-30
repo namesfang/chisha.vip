@@ -1,5 +1,5 @@
 import { post } from '$lib/request.js';
-import {  fail } from '@sveltejs/kit';
+import {  fail, redirect } from '@sveltejs/kit';
 
 type UserInfo = {
   token: string;
@@ -30,13 +30,12 @@ export const actions = {
 
     const res = await post('login', formData).send<UserInfo>(cookies);
 
-    console.log(res)
     if(res.success) {
       cookies.set('Authorization', res.data.token, {
         maxAge: 7200,
         sameSite: 'strict',
       });
-      // throw redirect(302, '/');
+      throw redirect(302, '/');
     }
   }
 }
