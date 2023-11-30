@@ -25,7 +25,7 @@
 <h1>创建派对</h1>
 
 <h2>吃的东西</h2>
-<form method="POST" action="?/create">
+<form method="POST">
   <input type="text" placeholder="派对名称" bind:value={ form.name }/>
   <input id="p" type="checkbox" value={ form.private }/>
   <label for="p">仅允许密码查看</label>

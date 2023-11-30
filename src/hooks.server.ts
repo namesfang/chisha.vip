@@ -36,7 +36,7 @@ export const handle: Handle = async ({ event, resolve })=> {
     } else {
       console.log(message, success);
     }
-  } else {
+  } else if(!pathname.startsWith('/help')) {
     if(!['/login', '/signup', '/metoo'].includes(pathname)) {
       throw redirect(302, '/login');
     }

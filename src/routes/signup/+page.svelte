@@ -1,7 +1,4 @@
-<script lang="ts">
-</script>
-
-<form method="POST" action="?/register">
+<form method="POST">
   <ul>
     <li>
       <label for="">手机：</label>
