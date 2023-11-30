@@ -23,7 +23,6 @@ const config = {
 		alias: {
 			$layouts: 'src/layouts',
 			$components: 'src/components',
-			$extend: 'src/extend',
 		}
 	}
 };

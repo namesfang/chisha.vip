@@ -2,6 +2,9 @@
 // for information about these interfaces
 declare global {
 	namespace App {
+		interface Locals {
+			user?: User.Info
+		}
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
@@ -10,6 +13,15 @@ declare global {
 				CHISHA_D1: D1Database
 				CHISHA_D1_PRE: D1Database
 			}
+		}
+	}
+
+	namespace User {
+		interface Info extends App.Locals {
+			id: number;
+			nickname: string;
+			phone: string;
+			email: string;
 		}
 	}
 }

@@ -12,3 +12,24 @@
     <QiniuUpload {type} {region} />
   {/if}
 </div>
+
+<div class="fab-upload">
+
+</div>
+
+<style lang="scss">
+  .fab-upload {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    &::after {
+      content: "";
+      border: 1px solid #39f;
+      border-radius: 1rem;
+      position: absolute;
+      inset: 0;
+      transform: scale(.5);
+      transform-origin: 0 0;
+    }
+  }
+</style>

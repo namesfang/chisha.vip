@@ -1,22 +1,10 @@
 <script lang="ts">
-  import FabIcon from '$components/fab-icon/index.svelte';
-
-  type ButtonType = "button" | "submit" | "reset" | null | undefined;
-
+  type ButtonType = "button" | "submit" | "reset";
   export let type: ButtonType = 'button';
-
-  export let prefixIcon = '';
-  export let suffixIcon = '';
 </script>
 
 <button { type } class="fab-button">
-  {#if prefixIcon.length}
-    <FabIcon type={ prefixIcon }/>
-  {/if}
   <slot/>
-  {#if suffixIcon.length}
-    <FabIcon type={ suffixIcon }/>
-  {/if}
 </button>
 
 <style lang="scss">
