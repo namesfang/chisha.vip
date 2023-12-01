@@ -5,9 +5,10 @@ declare global {
 		interface Locals {
 			user?: User.Info
 		}
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
+		interface Error {
+			id: string;
+			code: string;
+		}
 		interface Platform {
 			env: {
 				CHISHA_D1: D1Database
