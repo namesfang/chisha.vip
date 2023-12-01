@@ -1,0 +1,2 @@
+<header>App</header>
+<slot/>
