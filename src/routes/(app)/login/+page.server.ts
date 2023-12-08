@@ -7,19 +7,19 @@ type UserInfo = {
 
 export const actions = {
   async default({ cookies, request }) {
-    const data = await request.formData();
+    const formData = await request.formData();
 
-    const formData = {
+    const form = {
       phone: '',
       password: '',
     }
 
-    let name: keyof typeof formData;
+    let name: keyof typeof form;
     let value;
-    for(name in formData) {
-      value = data.get(name);
+    for(name in form) {
+      value = formData.get(name);
       if(value) {
-        formData[name] = String(value);
+        form[name] = String(value);
       } else {
         return fail(422, {
           error: '校验错误',
@@ -28,14 +28,18 @@ export const actions = {
       }
     }
 
-    const res = await post('login', formData).send<UserInfo>(cookies);
+    const { success, code, message, data } = await post('login', form).send<UserInfo>(cookies);
 
-    if(res.success) {
-      cookies.set('Authorization', res.data.token, {
+    if(success) {
+      cookies.set('Authorization', data.token, {
         maxAge: 7200,
         sameSite: 'strict',
       });
       throw redirect(302, '/');
+    } else {
+      throw fail(code, {
+        message,
+      });
     }
   }
 }
